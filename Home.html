@@ -10,7 +10,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #c5dbf1;
+      background-color: #f8f9fa;
     }
     .navbar {
       background-color: #343a40 !important;
@@ -29,6 +29,10 @@
       padding: 20px;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .bmi-comment {
+      margin-top: 20px;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -69,20 +73,26 @@
         <div class="col-md-6">
           <h1 class="display-4">Welcome to Fitness Gym</h1>
           <p class="lead">Achieve your fitness goals with us!</p>
+          <p class="lead">Transform your life with our top-notch facilities, expert trainers, and supportive community. Whether you're looking to lose weight, build muscle, or simply improve your overall well-being, Fitness Gym is your ultimate destination.</p>
+        <p class="lead">Join us today and start your journey towards a healthier, happier you!</p>
+        <h2 class="mb-4">Experience the Difference at Fitness Gym</h2>
         </div>
         <div class="col-md-6">
-          <img src="images/workout.jpg" class="img-fluid" alt="Fitness Gym Image">
+          <img src="images/workout2.jpg" class="img-fluid" alt="Fitness Gym Image">
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Eye-catching Textual Content -->
+
 
   <!-- BMI Calculator -->
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
         <div id="bmi-form">
-          <h2>BMI Calculator</h2>
+          <h2>Check your BMI with our Calculator</h2>
           <div class="form-group">
             <label for="gender">Gender:</label>
             <select class="form-control" id="gender">
@@ -103,7 +113,7 @@
             <input type="number" class="form-control" id="height">
           </div>
           <button class="btn btn-primary" onclick="calculateBMI()">Calculate BMI</button>
-          <div id="bmi-result" style="margin-top: 10px;"></div>
+          <div id="bmi-result" class="bmi-comment" style="margin-top: 10px;"></div>
         </div>
       </div>
     </div>
@@ -129,7 +139,7 @@
       // Determine BMI category and corresponding comment
       var comment, color, talkLink;
       if (bmi < 18.5) {
-        comment = "You are underweight, <a href='TalkToUs.html' style='color: red;'>let's talk how we can fix it.</a>";
+        comment = "You are underweight, let's talk how we can fix it.";
         color = "red";
         talkLink = "TalkToUs.html";
       } else if (bmi >= 18.5 && bmi < 25) {
