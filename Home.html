@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Gym</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #c5dbf1;
+    }
+    .navbar {
+      background-color: #343a40 !important;
+    }
+    .navbar-brand, .navbar-nav .nav-link {
+      color: #ffffff !important;
+    }
+    .jumbotron {
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    #bmi-form {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Fitness Gym</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Talk to Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Join with Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Careers</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Jumbotron with Image -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="display-4">Welcome to Fitness Gym</h1>
+          <p class="lead">Achieve your fitness goals with us!</p>
+        </div>
+        <div class="col-md-6">
+          <img src="images/workout.jpg" class="img-fluid" alt="Fitness Gym Image">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BMI Calculator -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div id="bmi-form">
+          <h2>BMI Calculator</h2>
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select class="form-control" id="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="age">Age (years):</label>
+            <input type="number" class="form-control" id="age">
+          </div>
+          <div class="form-group">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" class="form-control" id="weight">
+          </div>
+          <div class="form-group">
+            <label for="height">Height (cm):</label>
+            <input type="number" class="form-control" id="height">
+          </div>
+          <button class="btn btn-primary" onclick="calculateBMI()">Calculate BMI</button>
+          <div id="bmi-result" style="margin-top: 10px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script>
+    function calculateBMI() {
+      var gender = document.getElementById("gender").value;
+      var age = parseFloat(document.getElementById("age").value);
+      var weight = parseFloat(document.getElementById("weight").value);
+      var height = parseFloat(document.getElementById("height").value) / 100; // convert height to meters
+      var bmi = weight / (height * height);
+
+      // Round BMI to two decimal places
+      bmi = bmi.toFixed(2);
+
+      // Determine BMI category
+      var category;
+      if (bmi < 18.5) {
+        category = "Underweight";
+      } else if (bmi >= 18.5 && bmi < 25) {
+        category = "Normal weight";
+      } else if (bmi >= 25 && bmi < 30) {
+        category = "Overweight";
+      } else {
+        category = "Obese";
+      }
+
+      // Display BMI result
+      var result = "Your BMI: " + bmi + "<br>";
+      result += "Category: " + category;
+      document.getElementById("bmi-result").innerHTML = result;
+    }
+  </script>
+</body>
+</html>
