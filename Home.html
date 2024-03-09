@@ -126,21 +126,25 @@
       // Round BMI to two decimal places
       bmi = bmi.toFixed(2);
 
-      // Determine BMI category
-      var category;
+      // Determine BMI category and corresponding comment
+      var comment, color, talkLink;
       if (bmi < 18.5) {
-        category = "Underweight";
+        comment = "You are underweight, <a href='TalkToUs.html' style='color: red;'>let's talk how we can fix it.</a>";
+        color = "red";
+        talkLink = "TalkToUs.html";
       } else if (bmi >= 18.5 && bmi < 25) {
-        category = "Normal weight";
-      } else if (bmi >= 25 && bmi < 30) {
-        category = "Overweight";
-      } else {
-        category = "Obese";
+        comment = "Congratulations, your BMI is normal, we can help you to maintain it. <a href='TalkToUs.html' style='color: green;'>Talk to us.</a>";
+        color = "green";
+        talkLink = "";
+      } else if (bmi >= 25) {
+        comment = "You are overweight, don't worry we will help you. <a href='TalkToUs.html' style='color: red;'>Talk to us.</a>";
+        color = "red";
+        talkLink = "TalkToUs.html";
       }
 
-      // Display BMI result
+      // Display BMI result and comment
       var result = "Your BMI: " + bmi + "<br>";
-      result += "Category: " + category;
+      result += "<span style='color: " + color + ";'>" + comment + "</span>";
       document.getElementById("bmi-result").innerHTML = result;
     }
   </script>
